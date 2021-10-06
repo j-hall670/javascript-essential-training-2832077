@@ -6,3 +6,9 @@
  * - Create several objects using the class.
  * - Test the objecs by calling their properties and using their methods in the console.
  */
+
+import Mug from "./Mug.js";
+
+const whiteMug = new Mug("White Mug", 20, true, "White", false);
+
+whiteMug.fill();
