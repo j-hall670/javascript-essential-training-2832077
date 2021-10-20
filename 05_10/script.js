@@ -1,10 +1,10 @@
 /**
  * Challenge: Add a new element
  * - In JavaScript, create a new element to hold a navigation menu
- * - Add an unordered list and a series of no less than five links to the list 
+ * - Add an unordered list and a series of no less than five links to the list
  * - Use single words like “home”, “about”, etc for the list items and set the src attribute to # for simplicity
  * - Add the new navigation element to the DOM directly after the header
- * - Write basic CSS and add classes as necessary to create a horizontal layout for the menu. 
+ * - Write basic CSS and add classes as necessary to create a horizontal layout for the menu.
  * - A tip: Use either display flex or display grid to create the horizontal menu.
  */
 
@@ -58,5 +58,50 @@ const newArticle = document.createElement("article");
 newArticle.classList.add("backpack");
 newArticle.setAttribute("id", "everyday");
 newArticle.innerHTML = content;
+
+// Create unordered list
+const navMenu = document.createElement("ul");
+
+// Create arrays
+const listItems = [];
+const links = [];
+
+// Make array list items - using for loop to set array size
+for (let i = 0; i < 5; i++) {
+  listItems[i] = document.createElement("li");
+  links[i] = document.createElement("a");
+}
+
+// forEach to add hrefs - element is passed into the function
+links.forEach((element) => {
+  element.setAttribute("href", "#");
+});
+
+// Give text
+links[0].innerHTML = "Home";
+links[1].innerHTML = "About";
+links[2].innerHTML = "Contact";
+links[3].innerHTML = "Socials";
+links[4].innerHTML = "Other";
+
+// Style ul
+navMenu.style.listStyleType = "none";
+navMenu.style.display = "flex";
+navMenu.style.paddingLeft = "0";
+
+// Style li
+listItems.forEach((element) => {
+  element.style.padding = "0 10px";
+});
+
+// Append links to list items and list items to ul
+for (let i = 0; i < 5; i++) {
+  listItems[i].append(links[i]);
+  navMenu.append(listItems[i]);
+}
+
+// Append ul to header
+const header = document.querySelector("header");
+header.append(navMenu);
 
 main.append(newArticle);
